@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "env $(xargs < .env) node app/index.js",
-    "dev": "env $(xargs < .env) nodemon app/index.js | pino-pretty"
+    "dev": "env $(xargs < .env) nodemon app/index.js | pino-pretty",
+    "format": "prettier -w ."
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,10 @@
   },
   "devDependencies": {
     "nodemon": "~2.0.15",
-    "pino-pretty": "~7.6.1"
+    "pino-pretty": "~7.6.1",
+    "prettier": "~2.6.2"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }

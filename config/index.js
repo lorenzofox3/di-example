@@ -1,5 +1,5 @@
-import pg from './pg.js'
+import pg from './pg.js';
 
 export default Object.freeze({
-    pg
-})
+  pg,
+});
