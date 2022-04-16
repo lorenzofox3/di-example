@@ -1,0 +1,8 @@
+POST http://localhost:3005/transferts/
+Content-Type: application/json
+
+{
+  "from": 1,
+  "to": 2,
+  "amount": 300
+}

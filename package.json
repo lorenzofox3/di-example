@@ -1,0 +1,26 @@
+{
+  "name": "archi-example",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "env $(xargs < .env) node app/index.js",
+    "dev": "env $(xargs < .env) nodemon app/index.js | pino-pretty"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "camelcase": "~6.3.0",
+    "fastify": "~3.28.0",
+    "fastify-plugin": "~3.0.1",
+    "fastify-sensible": "~3.1.2",
+    "globby": "~13.1.1",
+    "pg": "~8.7.3",
+    "sql-template-strings": "~2.2.2",
+    "uppercamelcase": "~3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "~2.0.15",
+    "pino-pretty": "~7.6.1"
+  }
+}
