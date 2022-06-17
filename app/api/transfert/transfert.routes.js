@@ -33,15 +33,12 @@ export const transfertAPI = async (instance) => {
           to,
           amount: req.body.amount,
         });
-
-        console.log(newFrom);
-        console.log(newTo);
-
         await BankAccounts.updateBalance(newTo);
         await BankAccounts.updateBalance(newFrom);
       });
 
       res.status(201);
+      return '';
     },
   });
 };

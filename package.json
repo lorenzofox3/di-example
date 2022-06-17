@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "start": "env $(xargs < .env) node app/index.js",
+    "script": "env $(xargs < .env) node scripts/print-balance.js",
     "dev": "env $(xargs < .env) nodemon app/index.js | pino-pretty",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "test": "pta"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +25,8 @@
   "devDependencies": {
     "nodemon": "~2.0.15",
     "pino-pretty": "~7.6.1",
-    "prettier": "~2.6.2"
+    "prettier": "~2.6.2",
+    "pta": "~1.0.2"
   },
   "prettier": {
     "singleQuote": true
