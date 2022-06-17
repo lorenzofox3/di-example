@@ -38,7 +38,6 @@ export const transfertAPI = async (instance) => {
       });
 
       res.status(201);
-      return '';
     },
   });
 };

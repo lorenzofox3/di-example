@@ -4,5 +4,5 @@ Content-Type: application/json
 {
   "from": 1,
   "to": 2,
-  "amount": 200
+  "amount": 30
 }
