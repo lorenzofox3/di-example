@@ -22,6 +22,4 @@ SET
     balance=${balance}
 WHERE
     bank_account_id=${bankAccountId}
-RETURNING
-    *
-`;
+;`;

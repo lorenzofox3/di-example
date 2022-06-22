@@ -1,4 +1,4 @@
-FROM postgres:latest
+FROM mysql:latest
 
 RUN mkdir -p  /docker-entrypoint-initdb.d
 

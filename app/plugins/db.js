@@ -1,9 +1,9 @@
 import plugin from 'fastify-plugin';
-import { createConnectionPool } from '../../lib/db/pool.js';
+import { createDBClient } from '../../lib/db/index.js';
 
 export const dbConnection = plugin(
   async (instance, config) => {
-    const pool = createConnectionPool(config.pg);
+    const pool = createDBClient(config);
     // ping to validate the connection
     await pool.query('SELECT now()').catch((err) => {
       instance.log.info('could not initiate the connection with the database');

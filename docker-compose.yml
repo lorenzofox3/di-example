@@ -6,5 +6,13 @@ services:
       - ./.env
     ports:
       - "5432:5432"
+  db-mysql:
+    build:
+      dockerfile: mysql.dockerfile
+      context: ./db-dev
+    env_file:
+      - ./.env
+    ports:
+      - "3306:3306"
 
 
