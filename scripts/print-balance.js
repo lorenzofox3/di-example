@@ -1,22 +1,25 @@
 import { createContainer } from '../lib/di/container.js';
 import conf from '../config/index.js';
-import { createDBClient } from '../lib/db/index.js';
 
 (async () => {
-  const db = createDBClient(conf);
-  try {
-    const bankAccountIds = process.argv.slice(2);
-    if (!bankAccountIds.length) {
-      console.warn('no bank account id provided');
-      return;
-    }
-    const getDeps = await createContainer({});
+  const bankAccountIds = process.argv.slice(2);
+  if (!bankAccountIds.length) {
+    console.warn('no bank account id provided');
+    return;
+  }
+  const abortController = new AbortController();
+  const { signal } = abortController;
 
-    const { BankAccounts } = getDeps({ db });
+  try {
+    const resolve = await createContainer({
+      injectableGlob: '**/*.service.js',
+    });
+    const { BankAccounts } = resolve({ conf, signal });
+
     for (const bankAccountId of bankAccountIds) {
       console.log(await BankAccounts.findOne({ bankAccountId }));
     }
   } finally {
-    db.end();
+    abortController.abort();
   }
 })();

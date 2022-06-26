@@ -1,7 +1,7 @@
 import { transfert } from '../../../modules/bank-accounts/bank-accounts.model.js';
 
 export const transfertAPI = async (instance) => {
-  const { db } = instance;
+  const { Db } = instance;
 
   instance.route({
     method: 'POST',
@@ -18,7 +18,7 @@ export const transfertAPI = async (instance) => {
       },
     },
     async handler(req, res) {
-      await db.withinTransaction(async ({ BankAccounts }) => {
+      await Db.withinTransaction(async ({ BankAccounts }) => {
         const [from, to] = await Promise.all([
           BankAccounts.findOne({
             bankAccountId: req.body.from,
