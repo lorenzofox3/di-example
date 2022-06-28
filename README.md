@@ -30,8 +30,11 @@ and you will see the balance for account 1 and account 2
 
 ### databases
 
-The beauty of DI is that it allows us to swap databases engine without touching the "business" code: the .models.js files and, the route handlers and scripts ("usecases").
-We provided various implementation of the abstract interfaces: for MySQL and PostgresSQL (the only difference is the low level DB pool impl), and for mongodb (with a different bankAccounts.service impl and a different db pool impl )
+The beauty of DI is that it allows us to swap concrete implementations. In this case it gives the ability to change entirely the DB engine without touching the "business" code: the ```.models.js``` files and, the route handlers and scripts ("usecases").
+
+We provided various implementations of the abstract interfaces: for MySQL and PostgresSQL (the only difference is the low level DB pool impl), and for mongodb (with a different bankAccounts service impl and a different db pool impl )
+
+To toggle a particular engine: use the ``DB_ENGINE`` en variable (mongo, mysql or pg (default))
 
 #### SQL databases
 
