@@ -50,7 +50,7 @@ In order to support "transactions", the mongo set up needs to support replica se
 
 1. make sure db-dev/rs-init.sh and db-dev/init.js are executable (``chmod +x path/to/file``) as there will be in a shared volume
 2. start the mongo stack ``docker-compose -f mongo-rs.yml up``
-3. once you see in the logs that the first node is waiting for the replica set to be initialized, you can run ``docker exec mongo1 /script/rs-init.sh``
+3. once you see in the logs that the first node is waiting for the replica set to be initialized, you can run ``docker exec mongo1 /scripts/rs-init.sh``
 
 That's it: you will have a mongo cluster with the ``bank_accounts`` collection created and seeded. Note there are validation constraints as for the SQL databases setups 
 
