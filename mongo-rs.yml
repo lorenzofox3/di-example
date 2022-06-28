@@ -1,0 +1,38 @@
+services:
+  mongo1:
+    image: mongo
+    container_name: mongo1
+    volumes:
+      - ./db-dev/rs-init.sh:/scripts/rs-init.sh
+      - ./db-dev/init.js:/scripts/init.js
+    ports:
+      - 27017:27017
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo2
+      - mongo3
+    links:
+      - mongo2
+      - mongo3
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+
+  mongo2:
+    image: mongo
+    container_name: mongo2
+    env_file:
+      - ./.env
+    ports:
+      - 27018:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+  mongo3:
+    image: mongo
+    container_name: mongo3
+    ports:
+      - 27019:27017
+    env_file:
+      - ./.env
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]

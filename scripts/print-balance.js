@@ -17,7 +17,9 @@ import conf from '../config/index.js';
     const { BankAccounts } = resolve({ conf, signal });
 
     for (const bankAccountId of bankAccountIds) {
-      console.log(await BankAccounts.findOne({ bankAccountId }));
+      console.log(
+        await BankAccounts.findOne({ bankAccountId: Number(bankAccountId) })
+      );
     }
   } finally {
     abortController.abort();

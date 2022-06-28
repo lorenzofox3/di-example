@@ -1,27 +1,9 @@
-import SQL from 'sql-template-strings';
-import { compose } from '../../lib/utils.js';
+import createBankAccountMongo from './bank-accounts-mongo-impl.js';
+import createBankAccountSql from './bank-accounts-sql-impl.js';
 
-export default ({ Db }) => {
-  return {
-    findOne: compose([Db.one, findBankAccountQuery]),
-    updateBalance: compose([Db.one, updateBalanceQuery]),
-  };
+export default ({ conf, Db }) => {
+  const { engine } = conf;
+  return engine === 'mongo'
+    ? createBankAccountMongo({ Db })
+    : createBankAccountSql({ Db });
 };
-
-const findBankAccountQuery = ({ bankAccountId }) => SQL`
-SELECT
-    *
-FROM
-    bank_accounts
-WHERE
-    bank_account_id= ${bankAccountId}
-`;
-
-const updateBalanceQuery = ({ bankAccountId, balance }) => SQL`
-UPDATE
-    bank_accounts
-SET
-    balance=${balance}
-WHERE
-    bank_account_id=${bankAccountId}
-;`;
