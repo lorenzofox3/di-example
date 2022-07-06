@@ -44,6 +44,15 @@ You can start un local dev database with docker-compose:
 
 This will start a postgres container and a mysql container with the schema already set and a data seed (two bank accounts with an initial balance of 100 euros)
 
+Note for mysql: you might get an authentication error. In this case 
+
+1. connect to the database: ``docker-compose exec db-mysql mysql -u root -p``
+2. fill the password ("docker" if you kept the same .env)
+3. run the following command once you are connected to the database: ``ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';``
+4. test the connection with the check-balance script: ``npm run check-balance -- 1 2``
+
+
+
 #### Mongo database
 
 In order to support "transactions", the mongo set up needs to support replica sets.
