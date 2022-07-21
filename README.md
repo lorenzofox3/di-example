@@ -1,6 +1,6 @@
 # Dependency Injection example
 
-This is the application of the [following article]()
+This is the application of the [following article](https://tech.indy.fr/2022/07/21/lets-build-a-di-system-in-javascript-using-meta-programming/)
 
 It uses the DI container defined in the article. An injectable (service) registers itself to the manifest using a convention:
 any file with the ``.service.js`` extension will be injectable. For example a file called ``bank-accounts.service.js`` will be injectable under the token ``BankAccounts``.  
